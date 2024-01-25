@@ -13,3 +13,9 @@ print(np.mean(chol_hd))
 
 tstat, pval = ttest_1samp(chol_hd, 240)
 print(pval/2)
+
+no_chol_hd = no_hd.chol
+print(np.mean(chol_hd))
+
+tstat, pval = ttest_1samp(no_chol_hd, 240)
+print(pval/2)
