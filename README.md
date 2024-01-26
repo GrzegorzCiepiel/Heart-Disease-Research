@@ -12,6 +12,7 @@ Project covers five topics:
 + fasting blood sugar analysis
 + resting blood pressure predictions
 + maximum heart rate prediction
++ check correlation between having heart_deeseases and sex
 
 ## Analyse 
 1. For this analyse I divded dataset into 2 parts:
@@ -69,6 +70,23 @@ As we can see there is correlation between these two so I try to analyse further
 I use OLS.from_formula method from statsmodels.api  to get fitted values. Then using fitted values I plot a line showing correlation between thelach and age.
 
 ![linear regresion](https://github.com/GrzegorzCiepiel/Heart-Disease-Research/assets/135313652/c17e850c-441f-4f6f-92e5-c151d35673a6)
+
+5. To check correlation I use pandas method corsstab:
+
+frequencies = (pd.crosstab(heart.heart_disease, heart.sex)) =
+
+sex            female  male
+heart_disease              
+absence            72    92
+presence           25   114
+   
+In our sample 55%  male and only 25% female are sick. Next step is to do Chi-Square test:
+
+chi2, pval, dof, expected = chi2_contingency(frequencies)
+
+pval = 0.0000267
+
+For a 2x2 table (like the one we’ve been investigating), a Chi-Square statistic much smaller than around 4 would strongly suggest no association between the variables.
 
 
 
