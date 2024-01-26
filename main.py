@@ -55,6 +55,9 @@ print(heart.chol.count())
 print(heart.trestbps.count())
 
 plt.scatter(x='chol', y= 'trestbps', data=heart, color='purple')
+plt.title('Correlation between cholesterol level and resting blood pressure.')
+plt.xlabel('cholesterol level')
+plt.ylabel('resting blood pressure')
 plt.show()
 plt.clf()
 
@@ -64,6 +67,10 @@ plt.clf()
 # The question is if thalach: The person’s maximum heart rate achieved is associated with age?
 
 plt.scatter(heart.age, heart.thalach, color='gray')
+plt.title('Correlation between age and maximum heart'
+             ' rate')
+plt.xlabel('Age')
+plt.ylabel('Max heart rate in bpm')
 plt.show()
 plt.clf()
 
@@ -84,3 +91,4 @@ plt.xlabel('Age')
 plt.ylabel('Max heart rate in bpm')
 plt.show()
 plt.clf()
+
