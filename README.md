@@ -36,7 +36,7 @@ Assuming that the significance threshold for our analysis is equal to 5%, we see
 
 tstat, pval = ttest_1samp(no_chol_heartdisease, 240)
 
-pval = 0.53 = 0.53%
+pval = 0.53 = 53%
 
 Once again assuming that significance treshold for analysis id equal to 5%, we see that average cholesterol level in the sample without heart diseases is the same as in the general population.
 
