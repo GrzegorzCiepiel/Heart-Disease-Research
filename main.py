@@ -4,7 +4,7 @@ pd.set_option('display.max_columns', None)
 import numpy as np
 from scipy.stats import ttest_1samp, binomtest
 import matplotlib.pyplot as plt
-
+import statsmodels.api as sm
 # load data
 heart = pd.read_csv('heart_disease.csv')
 yes_hd = heart[heart.heart_disease == 'presence']
@@ -54,8 +54,33 @@ p_value = 0.0000467
 print(heart.chol.count())
 print(heart.trestbps.count())
 
-plt.scatter(x='chol', y= 'trestbps', data=heart)
+plt.scatter(x='chol', y= 'trestbps', data=heart, color='purple')
 plt.show()
 plt.clf()
 
 #Plot shows that there is no association between cholesterol level and resting blood pressure.
+
+#4. Simple linear regression on sample:
+# The question is if thalach: The person’s maximum heart rate achieved is associated with age?
+
+plt.scatter(heart.age, heart.thalach, color='gray')
+plt.show()
+plt.clf()
+
+# Plot shows that higher age is associated with less maximum heart rate.
+
+model = sm.OLS.from_formula('thalach ~ age', heart)
+results = model.fit()
+print(results.params)
+
+fitted_values = results.predict(heart)
+
+plt.scatter(heart.age, heart.thalach, color ='gray')
+plt.plot(heart.age, fitted_values, color='r')
+plt.title('Simple Linear Regression')
+plt.suptitle('Correlation between age and maximum heart'
+             ' rate')
+plt.xlabel('Age')
+plt.ylabel('Max heart rate in bpm')
+plt.show()
+plt.clf()
